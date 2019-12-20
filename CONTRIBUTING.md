@@ -102,4 +102,4 @@ After the PR is submitted, project maintainers will review it.
 
 PRs are rarely merged without some discussion with a maintainer. This is to ensure the larger community benefits from all code contributions.
 
-They will use a system of labels, like `Status: Awaiting Response`, to indicate they need your feedback. Please regularly check your open PRs, easily found at https://github.com/pulls, to help maintainer's get the information needed to merge your code.
+Please regularly check your open PRs, easily found at https://github.com/pulls, to help maintainer's get the information needed to merge your code.
