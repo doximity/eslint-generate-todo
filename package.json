@@ -12,7 +12,7 @@
     "format": "yarn prettier --write",
     "lint": "eslint . --ext .js,.ts",
     "prettier": "prettier \"{src,bin}/**\"",
-    "release": "np",
+    "release": "np --any-branch",
     "test": "jest"
   },
   "bin": {
