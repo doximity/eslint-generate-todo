@@ -53,3 +53,49 @@ To change the output path of the generated `.eslintrc-todo` file, you can run `e
 ```bash
 eslint-generate-todo --path config/eslint-overrides.yml
 ```
+
+# Contributing
+
+Before contributing code to `eslint-generate-todo`, please read and sign the [Contributor License Agreement](CONTRIBUTOR_LICENSE_AGREEMENT.md).
+
+Clone the repository and install dependencies:
+
+```bash
+git clone git@github.com:doximity/eslint-generate-todo.git
+cd eslint-generate-todo
+yarn install
+```
+
+To build `eslint-generate-todo`, you can run the `build` script:
+
+```bash
+yarn run build
+```
+
+While developing, you can run the `dev` script to automatically rebuild as files change:
+
+```bash
+yarn run dev
+```
+
+To lint code changes, you can run the `lint` script:
+
+```bash
+yarn run lint
+```
+
+To format code using Prettier, you can run the `format` script:
+
+```bash
+yarn run format
+```
+
+To run tests with Jest, you can run the `test` script:
+
+```bash
+yarn run test
+```
+
+# License
+
+The `eslint-generate-todo` tool is offered under the [Apache v2](LICENSE) license.
