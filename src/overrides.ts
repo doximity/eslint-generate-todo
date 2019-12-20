@@ -1,13 +1,13 @@
 import path from "path";
 import { CLIEngine, Linter } from "eslint";
 
-function stripEmptyFiles(
+export function stripEmptyFiles(
   results: CLIEngine.LintResult[]
 ): CLIEngine.LintResult[] {
   return results.filter(result => !!result.messages.length);
 }
 
-function stripNullRuleIds(ruleIds: (string | null)[]): string[] {
+export function stripNullRuleIds(ruleIds: (string | null)[]): string[] {
   return ruleIds.filter((ruleId): ruleId is string => ruleId !== null);
 }
 
