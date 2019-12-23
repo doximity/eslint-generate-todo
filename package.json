@@ -1,6 +1,6 @@
 {
   "name": "eslint-generate-todo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tool for generating eslint todo files",
   "main": "dist/index.js",
   "engines": {
