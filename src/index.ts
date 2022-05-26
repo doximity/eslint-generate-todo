@@ -1,24 +1,25 @@
 import fs from "fs";
 import util from "util";
-import { CLIEngine, Linter } from "eslint";
+import { ESLint, Linter } from "eslint";
 
 import { renderAsYAML, renderAsJSON } from "./render";
 import { mapReportToOverrides } from "./overrides";
 
 const writeFile = util.promisify(fs.writeFile);
 
-export async function execute(
-  files: Array<string>,
-  {
-    level,
-    format = "yaml",
-    path
-  }: { level: Linter.RuleLevel; format: "yaml" | "json"; path?: string }
-): Promise<string> {
-  const cli = new CLIEngine({});
+interface Options {
+  format: "yaml" | "json";
+  level: Linter.RuleLevel;
+  path?: string;
+}
 
-  const report = cli.executeOnFiles(files) as CLIEngine.LintReport;
-  const config = { overrides: mapReportToOverrides(report, level) };
+export const execute = async (
+  files: string[],
+  { level, format = "yaml", path }: Options
+): Promise<string> => {
+  const cli = new ESLint({});
+  const results = await cli.lintFiles(files);
+  const config = { overrides: mapReportToOverrides(results, level) };
 
   const outputPath =
     path || `.eslintrc-todo.${format === "yaml" ? "yml" : "json"}`;
@@ -30,4 +31,4 @@ export async function execute(
   );
 
   return outputPath;
-}
+};

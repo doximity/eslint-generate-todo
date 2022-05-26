@@ -3,13 +3,13 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   extends: [
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
   ],
   overrides: [
     {
       files: ["__tests__", "**/*.spec.{js,ts}"],
       plugins: ["jest"],
-      extends: ["plugin:jest/recommended", "plugin:jest/style"]
-    }
-  ]
+      extends: ["plugin:jest/recommended", "plugin:jest/style"],
+    },
+  ],
 };

@@ -1,48 +1,39 @@
-import { CLIEngine } from "eslint";
+import { ESLint } from "eslint";
 
 import {
   stripEmptyFiles,
   stripNullRuleIds,
-  mapReportToOverrides
+  mapReportToOverrides,
 } from "../overrides";
 
-function generateLintResult(ruleIds: string[] = []): CLIEngine.LintResult {
+const generateLintResult = (ruleIds: string[] = []): ESLint.LintResult => {
   return {
+    errorCount: 0,
+    fatalErrorCount: 0,
     filePath: "foo",
-    messages: ruleIds.map(ruleId => ({
+    fixableErrorCount: 0,
+    fixableWarningCount: 0,
+    messages: ruleIds.map((ruleId) => ({
       column: 0,
       line: 0,
       ruleId,
       message: "",
       nodeType: "",
       severity: 0,
-      source: ""
+      source: "",
     })),
-    errorCount: 0,
+    suppressedMessages: [],
+    usedDeprecatedRules: [],
     warningCount: 0,
-    fixableErrorCount: 0,
-    fixableWarningCount: 0
   };
-}
-
-function generateReport(
-  results: CLIEngine.LintResult[] = []
-): CLIEngine.LintReport {
-  return {
-    results,
-    errorCount: 0,
-    warningCount: 0,
-    fixableErrorCount: 0,
-    fixableWarningCount: 0
-  };
-}
+};
 
 describe("stripEmptyFiles", () => {
   test("removes results with no messages", () => {
     const results = [
       generateLintResult(),
       generateLintResult(["foo", "bar"]),
-      generateLintResult()
+      generateLintResult(),
     ];
 
     expect(stripEmptyFiles(results)).toEqual([results[1]]);
@@ -59,30 +50,30 @@ describe("stripNullRuleIds", () => {
 
 describe("mapReportToOverrides", () => {
   test("creates a list of overrides from a report", () => {
-    const report = generateReport([generateLintResult(["foo", "bar"])]);
+    const report = [generateLintResult(["foo", "bar"])];
 
     expect(mapReportToOverrides(report, "warn")).toEqual([
       {
         files: ["foo"],
         rules: {
           foo: "warn",
-          bar: "warn"
-        }
-      }
+          bar: "warn",
+        },
+      },
     ]);
   });
 
   test("sets the level of the rules", () => {
-    const report = generateReport([generateLintResult(["foo", "bar"])]);
+    const report = [generateLintResult(["foo", "bar"])];
 
     expect(mapReportToOverrides(report, "warn")).toEqual([
       {
         files: ["foo"],
         rules: {
           foo: "warn",
-          bar: "warn"
-        }
-      }
+          bar: "warn",
+        },
+      },
     ]);
 
     expect(mapReportToOverrides(report, "off")).toEqual([
@@ -90,23 +81,23 @@ describe("mapReportToOverrides", () => {
         files: ["foo"],
         rules: {
           foo: "off",
-          bar: "off"
-        }
-      }
+          bar: "off",
+        },
+      },
     ]);
   });
 
   test("combines duplicate rule violations", () => {
-    const report = generateReport([generateLintResult(["foo", "foo", "bar"])]);
+    const report = [generateLintResult(["foo", "foo", "bar"])];
 
     expect(mapReportToOverrides(report, "warn")).toEqual([
       {
         files: ["foo"],
         rules: {
           foo: "warn",
-          bar: "warn"
-        }
-      }
+          bar: "warn",
+        },
+      },
     ]);
   });
 });
