@@ -5,11 +5,12 @@ Thank you for wanting to contribute back to the eslint-generate-todo repository.
 Before contributing code to `eslint-generate-todo`, please read and sign the [Contributor License Agreement](CONTRIBUTOR_LICENSE_AGREEMENT.md).
 
 ## Guidelines
+
 We ask that you keep the following guidelines in mind when planning your contribution:
 
-* Whether your contribution is for a bug fix or a feature request, **create an [Issue](https://github.com/doximity/eslint-generate-todo/issues)** to let us know what you are thinking before you fix it. It helps us give a LGTM much faster (with fewer cases of saying no to a PR)
-* **For bugs**, if you have already found a fix, feel free to submit a Pull Request referencing the Issue you created. Include the `Fixes #` syntax to link it to the issue you're addressing.
-* **For feature requests**, we want to improve upon the library incrementally which means small changes at a time. In order to ensure your PR can be reviewed in a timely manner, please keep PRs small. If you think this is unrealistic, then mention that within the issue and we can discuss it.
+- Whether your contribution is for a bug fix or a feature request, **create an [Issue](https://github.com/doximity/eslint-generate-todo/issues)** to let us know what you are thinking before you fix it. It helps us give a LGTM much faster (with fewer cases of saying no to a PR)
+- **For bugs**, if you have already found a fix, feel free to submit a Pull Request referencing the Issue you created. Include the `Fixes #` syntax to link it to the issue you're addressing.
+- **For feature requests**, we want to improve upon the library incrementally which means small changes at a time. In order to ensure your PR can be reviewed in a timely manner, please keep PRs small. If you think this is unrealistic, then mention that within the issue and we can discuss it.
 
 ## Workflow
 

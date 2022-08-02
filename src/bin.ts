@@ -1,11 +1,9 @@
-#!/usr/bin/env node
-
-const program = require("caporal");
-const { execute } = require("../dist/index");
-const package = require("../package.json");
+import program from "caporal";
+import { execute } from "./index";
+import { version } from "../package.json";
 
 program
-  .version(package.version)
+  .version(version)
   .description("Generates a list of disabled eslint rules.")
   .argument("[files...]", "Files to validate", program.LIST, ".")
   .option(
@@ -30,11 +28,13 @@ program
     const configFile = await execute(args.files, {
       level,
       format: options.format,
-      path: options.path
+      path: options.path,
     });
 
     logger.info(`ESLint todo config written to ${configFile}`);
     logger.info("You may now extend this config in your ESLint config file.");
   });
 
-program.parse(process.argv);
+export const parse = (args: string[]) => {
+  program.parse(args);
+};
