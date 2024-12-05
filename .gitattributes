@@ -1,0 +1,5 @@
+
+# Mark Yarn release and plugin bundles as binary.
+/.yarn/releases/** binary
+/.yarn/plugins/** binary
+
